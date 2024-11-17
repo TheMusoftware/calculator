@@ -3,9 +3,45 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
+/* Variables */
+num _num1 = 0;
+num _num2 = 0;
+num _result = 0;
+String _num1Holder = "0";
+String _num2Holder = "";
+String _operationKey = "";
+bool _isClickOperationKey = false;
+bool _isClickResKey = false;
+
 void main() {
   runApp(calculator());
 }
+
+void addNum(int num){
+  if (!_isClickOperationKey) {
+
+    if(_num1Holder.startsWith('0')) _num1Holder = '';
+    _num1Holder = '$_num1Holder$num';
+    if(_num1Holder.startsWith('-') && _num1Holder.startsWith('0',1)){
+      _num1Holder = _num1Holder.replaceFirst('0', '',1);
+    }
+  } else {
+    _num2Holder = '$_num2Holder$num';
+  }
+}
+
+void operationKeyPress(String opKey){
+  if (!_isClickOperationKey) {
+    _isClickOperationKey = true;
+    _operationKey = opKey;
+    if (_num1Holder.startsWith('-')) {
+      _num1 = double.parse(_num1Holder.substring(1, _num1Holder.length)) *-1;
+    } else {
+      _num1 = double.parse(_num1Holder);
+    }
+  }
+}
+
 
 
 class calculator extends StatefulWidget {
@@ -16,14 +52,7 @@ class calculator extends StatefulWidget {
 }
 
 class _calculatorState extends State<calculator> {
-  num _num1 = 0;
-  num _num2 = 0;
-  num _result = 0;
-  String _num1Holder = "";
-  String _num2Holder = "";
-  String _operationKey = "";
-  bool _isClickOperationKey = false;
-  bool _isClickResKey = false;
+
 
   @override
   Widget build(BuildContext context) {
@@ -34,13 +63,14 @@ class _calculatorState extends State<calculator> {
         children: [
           Container(
             alignment: Alignment.centerRight,
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(24),
             child: Text(
               '$_num1Holder$_operationKey$_num2Holder',
               style: const TextStyle(fontSize: 48),
             ),
           ),
           const Divider(),
+
           // 1ROW
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -50,7 +80,7 @@ class _calculatorState extends State<calculator> {
                 child: ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      _num1Holder = "";
+                      _num1Holder = "0";
                       _num2Holder = "";
                       _operationKey = "";
                       _isClickOperationKey = false;
@@ -128,17 +158,7 @@ class _calculatorState extends State<calculator> {
                 child: ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      if (!_isClickOperationKey) {
-                        _isClickOperationKey = true;
-                        _operationKey = '/';
-                        if (_num1Holder.startsWith('-')) {
-                          _num1Holder =
-                              _num1Holder.substring(1, _num1Holder.length);
-                          _num1 = double.parse(_num1Holder)*-1;
-                        } else {
-                          _num1 = double.parse(_num1Holder);
-                        }
-                      }
+                      operationKeyPress('/');
                     });
                   },
                   style: ElevatedButton.styleFrom(
@@ -162,11 +182,7 @@ class _calculatorState extends State<calculator> {
                 child: ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      if (!_isClickOperationKey) {
-                        _num1Holder = '${_num1Holder}7';
-                      } else {
-                        _num2Holder = '${_num2Holder}7';
-                      }
+                      addNum(7);
                     });
                   },
                   style: ElevatedButton.styleFrom(
@@ -184,11 +200,7 @@ class _calculatorState extends State<calculator> {
                 child: ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      if (!_isClickOperationKey) {
-                        _num1Holder = '${_num1Holder}8';
-                      } else {
-                        _num2Holder = '${_num2Holder}8';
-                      }
+                      addNum(8);
                     });
                   },
                   style: ElevatedButton.styleFrom(
@@ -206,11 +218,7 @@ class _calculatorState extends State<calculator> {
                 child: ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      if (!_isClickOperationKey) {
-                        _num1Holder = '${_num1Holder}9';
-                      } else {
-                        _num2Holder = '${_num2Holder}9';
-                      }
+                      addNum(9);
                     });
                   },
                   style: ElevatedButton.styleFrom(
@@ -228,17 +236,7 @@ class _calculatorState extends State<calculator> {
                 child: ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      if (!_isClickOperationKey) {
-                        _isClickOperationKey = true;
-                        _operationKey = 'x';
-                        if (_num1Holder.startsWith('-')) {
-                          _num1Holder =
-                              _num1Holder.substring(1, _num1Holder.length);
-                          _num1 = double.parse(_num1Holder)*-1;
-                        } else {
-                          _num1 = double.parse(_num1Holder);
-                        }
-                      }
+                      operationKeyPress('x');
                     });
                   },
                   style: ElevatedButton.styleFrom(
@@ -262,11 +260,7 @@ class _calculatorState extends State<calculator> {
                 child: ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      if (!_isClickOperationKey) {
-                        _num1Holder = '${_num1Holder}4';
-                      } else {
-                        _num2Holder = '${_num2Holder}4';
-                      }
+                     addNum(4);
                     });
                   },
                   style: ElevatedButton.styleFrom(
@@ -284,11 +278,7 @@ class _calculatorState extends State<calculator> {
                 child: ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      if (!_isClickOperationKey) {
-                        _num1Holder = '${_num1Holder}5';
-                      } else {
-                        _num2Holder = '${_num2Holder}5';
-                      }
+                     addNum(5);
                     });
                   },
                   style: ElevatedButton.styleFrom(
@@ -306,11 +296,7 @@ class _calculatorState extends State<calculator> {
                 child: ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      if (!_isClickOperationKey) {
-                        _num1Holder = '${_num1Holder}6';
-                      } else {
-                        _num2Holder = '${_num2Holder}6';
-                      }
+                     addNum(6);
                     });
                   },
                   style: ElevatedButton.styleFrom(
@@ -328,17 +314,7 @@ class _calculatorState extends State<calculator> {
                 child: ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      if (!_isClickOperationKey) {
-                        _isClickOperationKey = true;
-                        _operationKey = '-';
-                        if (_num1Holder.startsWith('-')) {
-
-
-                          _num1 = double.parse(_num1Holder.substring(1, _num1Holder.length))*-1;
-                        } else {
-                          _num1 = double.parse(_num1Holder);
-                        }
-                      }
+                      operationKeyPress('-');
                     });
                   },
                   style: ElevatedButton.styleFrom(
@@ -362,11 +338,7 @@ class _calculatorState extends State<calculator> {
                 child: ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      if (!_isClickOperationKey) {
-                        _num1Holder = '${_num1Holder}1';
-                      } else {
-                        _num2Holder = '${_num2Holder}1';
-                      }
+                      addNum(1);
                     });
                   },
                   style: ElevatedButton.styleFrom(
@@ -384,11 +356,7 @@ class _calculatorState extends State<calculator> {
                 child: ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      if (!_isClickOperationKey) {
-                        _num1Holder = '${_num1Holder}2';
-                      } else {
-                        _num2Holder = '${_num2Holder}2';
-                      }
+                      addNum(2);
                     });
                   },
                   style: ElevatedButton.styleFrom(
@@ -406,11 +374,7 @@ class _calculatorState extends State<calculator> {
                 child: ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      if (!_isClickOperationKey) {
-                        _num1Holder = '${_num1Holder}3';
-                      } else {
-                        _num2Holder = '${_num2Holder}3';
-                      }
+                      addNum(3);
                     });
                   },
                   style: ElevatedButton.styleFrom(
@@ -428,17 +392,7 @@ class _calculatorState extends State<calculator> {
                 child: ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      if (!_isClickOperationKey) {
-                        _isClickOperationKey = true;
-                        _operationKey = '+';
-                        if (_num1Holder.startsWith('-')) {
-                          _num1Holder =
-                              _num1Holder.substring(1, _num1Holder.length);
-                          _num1 = double.parse(_num1Holder);
-                        } else {
-                          _num1 = double.parse(_num1Holder);
-                        }
-                      }
+                      operationKeyPress('+');
                     });
                   },
                   style: ElevatedButton.styleFrom(
@@ -466,18 +420,20 @@ class _calculatorState extends State<calculator> {
                   onPressed: () {
                     setState(() {
                       if (!_isClickOperationKey) {
-                        if (_num1Holder.isNotEmpty) {
+                        if (_num1Holder.isNotEmpty && !_num1Holder.startsWith('0')) {
+
                           _num1Holder = '${_num1Holder}0';
                         }
                       } else {
-                        if (_num2Holder.isNotEmpty) {
+
                           _num2Holder = '${_num2Holder}0';
-                        }
+
                       }
                     });
                   },
                   style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 24), // Butonun yüksekliği
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 24), // Butonun yüksekliği
                   ),
                   child: const Text(
                     '0',
@@ -519,32 +475,45 @@ class _calculatorState extends State<calculator> {
 
               const Text("  "), // Boşluk
 
-
               Expanded(
                 flex: 1,
                 child: ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      if(_isClickOperationKey){
+                      if (_isClickOperationKey) {
                         if (_num2Holder.startsWith('-')) {
-                          _num2Holder =
-                              _num2Holder.substring(1, _num2Holder.length);
-                          _num2 = double.parse(_num2Holder)*-1;
+                          _num2 = double.parse(_num2Holder.substring(1, _num2Holder.length)) *-1;
                         } else {
                           _num2 = double.parse(_num2Holder);
                         }
 
-                        switch (_operationKey){
-                          case '+': {
-                            _num1 = _num1+_num2;
-                          }
-                          case '-' :{
-                            _num1 = _num1-_num2;
-                          }
-                          case 'x' :{
-                            _num1 = _num1*_num2;
+                        switch (_operationKey) {
+                          case '+':
+                            {
+                              _num1 = _num1 + _num2;
+                            }
+                          case '-':
+                            {
+                              _num1 = _num1 - _num2;
+                            }
+                          case 'x':
+                            {
+                              _num1 = _num1 * _num2;
+                            }
+                          case '/':{
+                            if (_num2 == 0) {
+                              _num1Holder = 'Error';
+                              _num2Holder = '';
+                              _operationKey = '';
+                              _isClickOperationKey = false;
+                              return;
+                            } else {
+                              _num1 = _num1 / _num2;
+                            }
                           }
                         }
+
+
                         _num1Holder = _num1.toString();
                         _num2Holder = '';
                         _operationKey = '';
@@ -562,7 +531,6 @@ class _calculatorState extends State<calculator> {
               const Text("  "), // Boşluk
             ],
           )
-
         ],
       )),
     );
