@@ -195,8 +195,7 @@ class _calculatorState extends State<calculator> {
                         });
                       },
                       style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 24), // Butonun yüksekliği
+                        padding: const EdgeInsets.symmetric(vertical: 24),
                       ),
                       child: const Text(
                         '7',
@@ -214,8 +213,7 @@ class _calculatorState extends State<calculator> {
                         });
                       },
                       style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 24), // Butonun yüksekliği
+                        padding: const EdgeInsets.symmetric(vertical: 24),
                       ),
                       child: const Text(
                         '8',
@@ -233,8 +231,7 @@ class _calculatorState extends State<calculator> {
                         });
                       },
                       style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 24), // Butonun yüksekliği
+                        padding: const EdgeInsets.symmetric(vertical: 24),
                       ),
                       child: const Text(
                         '9',
@@ -284,8 +281,7 @@ class _calculatorState extends State<calculator> {
                         });
                       },
                       style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 24), // Butonun yüksekliği
+                        padding: const EdgeInsets.symmetric(vertical: 24),
                       ),
                       child: const Text(
                         '4',
@@ -303,8 +299,7 @@ class _calculatorState extends State<calculator> {
                         });
                       },
                       style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 24), // Butonun yüksekliği
+                        padding: const EdgeInsets.symmetric(vertical: 24),
                       ),
                       child: const Text(
                         '5',
@@ -322,8 +317,7 @@ class _calculatorState extends State<calculator> {
                         });
                       },
                       style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 24), // Butonun yüksekliği
+                        padding: const EdgeInsets.symmetric(vertical: 24),
                       ),
                       child: const Text(
                         '6',
@@ -370,8 +364,7 @@ class _calculatorState extends State<calculator> {
                         });
                       },
                       style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 24), // Butonun yüksekliği
+                        padding: const EdgeInsets.symmetric(vertical: 24),
                       ),
                       child: const Text(
                         '1',
@@ -389,8 +382,7 @@ class _calculatorState extends State<calculator> {
                         });
                       },
                       style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 24), // Butonun yüksekliği
+                        padding: const EdgeInsets.symmetric(vertical: 24),
                       ),
                       child: const Text(
                         '2',
@@ -408,8 +400,7 @@ class _calculatorState extends State<calculator> {
                         });
                       },
                       style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 24), // Butonun yüksekliği
+                        padding: const EdgeInsets.symmetric(vertical: 24),
                       ),
                       child: const Text(
                         '3',
@@ -447,11 +438,10 @@ class _calculatorState extends State<calculator> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text("  "), // Sol boşluk
+                  const Text("  "),
 
-                  // 0 butonu, 2 birim yer kaplayacak
                   Expanded(
-                    flex: 2, // Bu buton 2 birim yer kaplar
+                    flex: 2,
                     child: ElevatedButton(
                       onPressed: () {
                         setState(() {
@@ -466,8 +456,7 @@ class _calculatorState extends State<calculator> {
                         });
                       },
                       style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 24), // Butonun yüksekliği
+                        padding: const EdgeInsets.symmetric(vertical: 24),
                       ),
                       child: const Text(
                         '0',
@@ -477,11 +466,10 @@ class _calculatorState extends State<calculator> {
                     ),
                   ),
 
-                  const Text("  "), // Boşluk
+                  const Text("  "),
 
-                  // . butonu, 1 birim yer kaplayacak
                   Expanded(
-                    flex: 1, // Bu buton 1 birim yer kaplar
+                    flex: 1,
                     child: ElevatedButton(
                       onPressed: () {
                         setState(() {
