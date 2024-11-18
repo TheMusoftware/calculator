@@ -11,6 +11,8 @@ Features:
 **&#8226;**  **handling (e.g., division by zero)**
 
 
+
 **Calculator v0.1 - Main Screen**
 
-![image](https://github.com/user-attachments/assets/09f15c62-fef8-4653-8320-94a3187999ec)
+<img src="https://github.com/user-attachments/assets/09f15c62-fef8-4653-8320-94a3187999ec" height="500" />
+
